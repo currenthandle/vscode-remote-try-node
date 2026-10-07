@@ -13,8 +13,13 @@ const HOST = '0.0.0.0';
 
 // App
 const app = express();
+
+// Tracks how many requests the server has served since it started.
+let requestCount = 0;
+
 app.get('/', (req, res) => {
-	res.send('Hello remote world!\n');
+	requestCount += 1;
+	res.send(`Hello remote world!\nRequests served: ${requestCount}\n`);
 });
 
 app.listen(PORT, HOST);
